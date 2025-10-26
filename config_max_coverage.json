@@ -1,0 +1,45 @@
+{
+  "description": "高灵敏度配置 - 检测更多细小裂隙，最大化覆盖率",
+  "preprocessing": {
+    "voxel_size": 0.005,
+    "remove_outliers": true,
+    "outlier_nb_neighbors": 25,
+    "outlier_std_ratio": 3.0,
+    "comment": "更小的体素尺寸，保留更多细节；更宽松的离群点过滤"
+  },
+  "normal_estimation": {
+    "search_radius": 0.35,
+    "max_nn": 35,
+    "use_parallel": true,
+    "n_jobs": -1,
+    "comment": "平衡速度和精度的法向量估计"
+  },
+  "clustering": {
+    "min_cluster_size": 20,
+    "min_samples": 3,
+    "angle_threshold": 40,
+    "cluster_selection_method": "eom",
+    "cluster_selection_epsilon": 0.0,
+    "comment": "HDBSCAN超低阈值：min_cluster_size=20, min_samples=3，极大提高覆盖率"
+  },
+  "meanshift": {
+    "quantile": 0.08,
+    "comment": "较低的分位数，检测更多密度峰"
+  },
+  "kde": {
+    "bin_size": 512,
+    "min_angle_between_sets": 8,
+    "max_sets": 30,
+    "comment": "已废弃，仅作兼容保留"
+  },
+  "performance": {
+    "use_parallel": true,
+    "n_jobs": -1,
+    "batch_size": "auto"
+  },
+  "gpu": {
+    "use_multi_gpu": false,
+    "device_ids": [0],
+    "primary_device": 0
+  }
+}

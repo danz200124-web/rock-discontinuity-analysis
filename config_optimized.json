@@ -1,0 +1,38 @@
+{
+  "preprocessing": {
+    "voxel_size": 0.05,
+    "remove_outliers": true,
+    "outlier_nb_neighbors": 20,
+    "outlier_std_ratio": 2.5
+  },
+  "normal_estimation": {
+    "search_radius": 0.5,
+    "max_nn": 50,
+    "use_parallel": true,
+    "n_jobs": 64
+  },
+  "clustering": {
+    "eps": 0.5,
+    "min_samples": 10,
+    "min_cluster_size": 100,
+    "angle_threshold": 35
+  },
+  "meanshift": {
+    "quantile": 0.10
+  },
+  "kde": {
+    "bin_size": 256,
+    "min_angle_between_sets": 10,
+    "max_sets": 20
+  },
+  "performance": {
+    "use_parallel": true,
+    "n_jobs": 64,
+    "batch_size": 100000
+  },
+  "gpu": {
+    "use_multi_gpu": true,
+    "device_ids": [0, 1, 2, 3],
+    "primary_device": 0
+  }
+}

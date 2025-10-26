@@ -1,0 +1,40 @@
+{
+  "description": "默认配置 - HDBSCAN优化版",
+  "preprocessing": {
+    "voxel_size": 0.008,
+    "remove_outliers": true,
+    "outlier_nb_neighbors": 20,
+    "outlier_std_ratio": 2.5
+  },
+  "normal_estimation": {
+    "search_radius": 0.4,
+    "max_nn": 40,
+    "use_parallel": true,
+    "n_jobs": -1
+  },
+  "clustering": {
+    "min_cluster_size": 30,
+    "min_samples": 5,
+    "angle_threshold": 35,
+    "cluster_selection_method": "eom",
+    "cluster_selection_epsilon": 0.0
+  },
+  "meanshift": {
+    "quantile": 0.12
+  },
+  "kde": {
+    "bin_size": 256,
+    "min_angle_between_sets": 12,
+    "max_sets": 20
+  },
+  "performance": {
+    "use_parallel": true,
+    "n_jobs": -1,
+    "batch_size": "auto"
+  },
+  "gpu": {
+    "use_multi_gpu": false,
+    "device_ids": [0],
+    "primary_device": 0
+  }
+}

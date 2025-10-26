@@ -1,0 +1,47 @@
+{
+  "description": "HDBSCAN优化配置 - 最大化点云着色覆盖率",
+  "preprocessing": {
+    "voxel_size": 0.008,
+    "remove_outliers": true,
+    "outlier_nb_neighbors": 20,
+    "outlier_std_ratio": 2.5,
+    "comment": "适度下采样，保留更多细节"
+  },
+  "normal_estimation": {
+    "search_radius": 0.4,
+    "max_nn": 40,
+    "use_parallel": true,
+    "n_jobs": -1,
+    "comment": "增大搜索半径，提高法向量精度"
+  },
+  "clustering": {
+    "min_cluster_size": 30,
+    "min_samples": 5,
+    "angle_threshold": 35,
+    "cluster_selection_method": "eom",
+    "cluster_selection_epsilon": 0.0,
+    "comment": "HDBSCAN参数：降低min_cluster_size和min_samples，减少噪声点，提高聚类覆盖率"
+  },
+  "meanshift": {
+    "quantile": 0.12,
+    "comment": "Mean-Shift密度分析，适中的分位数阈值"
+  },
+  "kde": {
+    "bin_size": 256,
+    "min_angle_between_sets": 12,
+    "max_sets": 20,
+    "comment": "已废弃，仅作兼容保留"
+  },
+  "performance": {
+    "use_parallel": true,
+    "n_jobs": -1,
+    "batch_size": "auto",
+    "comment": "n_jobs=-1 使用所有CPU核心"
+  },
+  "gpu": {
+    "use_multi_gpu": false,
+    "device_ids": [0],
+    "primary_device": 0,
+    "comment": "GPU配置（如可用）"
+  }
+}

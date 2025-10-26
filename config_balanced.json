@@ -1,0 +1,45 @@
+{
+  "description": "平衡配置 - 兼顾检测精度和覆盖率",
+  "preprocessing": {
+    "voxel_size": 0.008,
+    "remove_outliers": true,
+    "outlier_nb_neighbors": 20,
+    "outlier_std_ratio": 2.5,
+    "comment": "标准下采样和离群点过滤"
+  },
+  "normal_estimation": {
+    "search_radius": 0.4,
+    "max_nn": 40,
+    "use_parallel": true,
+    "n_jobs": -1,
+    "comment": "标准法向量估计参数"
+  },
+  "clustering": {
+    "min_cluster_size": 25,
+    "min_samples": 5,
+    "angle_threshold": 35,
+    "cluster_selection_method": "eom",
+    "cluster_selection_epsilon": 0.0,
+    "comment": "HDBSCAN平衡参数：适中的阈值，平衡噪声过滤和覆盖率"
+  },
+  "meanshift": {
+    "quantile": 0.12,
+    "comment": "标准分位数阈值"
+  },
+  "kde": {
+    "bin_size": 256,
+    "min_angle_between_sets": 12,
+    "max_sets": 20,
+    "comment": "已废弃，仅作兼容保留"
+  },
+  "performance": {
+    "use_parallel": true,
+    "n_jobs": -1,
+    "batch_size": "auto"
+  },
+  "gpu": {
+    "use_multi_gpu": false,
+    "device_ids": [0],
+    "primary_device": 0
+  }
+}
